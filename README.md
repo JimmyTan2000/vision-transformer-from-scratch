@@ -13,6 +13,7 @@ The Vision Transformer (ViT) applies the standard Transformer architecture direc
 - `model.py`: The core ViT architecture (Patch Embedding, Attention, Transformer Blocks, Classification Head).
 - `train.py`: Training script for CIFAR-10 with AMP, AdamW, and a warmup + cosine LR schedule.
 - `inference.py`: Script to load a trained checkpoint and run predictions.
+- `inference.ipynb`: Jupyter Notebook for interactive visualization, confidence analysis, and patch inspection.
 - `requirements.txt`: List of dependencies.
 - `checkpoints/`: Directory where trained models are saved.
 
@@ -67,6 +68,18 @@ Once you have a trained checkpoint (`checkpoints/vit_best.pth`):
 ```bash
 python inference.py
 ```
+
+For a more interactive experience, use the provided Jupyter Notebook:
+
+```bash
+jupyter notebook inference.ipynb
+```
+
+The notebook includes:
+- Visual inspection of test samples (Ground Truth vs. Prediction).
+- Confidence probability charts for individual images.
+- **Patch Visualization**: See how the model decomposes an image into a grid of patches.
+- Per-class accuracy breakdown.
 
 ### Usage in Code
 
