@@ -4,11 +4,11 @@ This repository contains a clean, educational implementation of the Vision Trans
 
 The implementation is designed to be as faithful as possible to the original paper.
 
-## 🚀 Overview
+## Overview
 
 The Vision Transformer (ViT) applies the standard Transformer architecture directly to images. Instead of using convolutional layers, it breaks an image into fixed-size patches, flattens them, and linearly projects them into a sequence of embeddings, which are then processed by a series of Transformer Encoder blocks.
 
-## 📁 Repository Structure
+## Repository Structure
 
 - `model.py`: The core ViT architecture (Patch Embedding, Attention, Transformer Blocks, Classification Head).
 - `train.py`: Training script for CIFAR-10 with AMP, AdamW, and a warmup + cosine LR schedule.
@@ -16,7 +16,7 @@ The Vision Transformer (ViT) applies the standard Transformer architecture direc
 - `requirements.txt`: List of dependencies.
 - `checkpoints/`: Directory where trained models are saved.
 
-## 🏗️ Architecture Details
+## Architecture Details
 
 The implementation follows the **Pre-Norm** variant described in §3 and Appendix B of the paper:
 
@@ -47,7 +47,7 @@ The implementation follows the **Pre-Norm** variant described in §3 and Appendi
 
 For the standard **ViT-Base** configuration from the paper (`image_size=224, patch_size=16, hidden_dim=768, num_layers=12, num_heads=12, mlp_dim=3072`).
 
-## 📉 Training
+## Training
 
 To train the model on CIFAR-10:
 
@@ -60,7 +60,7 @@ The training script uses:
 - **LR Schedule**: Linear warmup for the first 10 epochs, followed by cosine annealing decay (Appendix B).
 - **Mixed Precision**: AMP (`torch.cuda.amp`) for faster training on GPU.
 
-## 🔮 Inference
+## Inference
 
 Once you have a trained checkpoint (`checkpoints/vit_best.pth`):
 
@@ -96,7 +96,7 @@ model.load_state_dict(torch.load("checkpoints/vit_best.pth"))
 model.head = torch.nn.Linear(192, new_num_classes)
 ```
 
-## ✅ Results
+## Results
 
 After 100 epochs of training on CIFAR-10:
 - **Parameters**: ~5.4M
